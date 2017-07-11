@@ -42,10 +42,17 @@ AtariController::AtariController(byte db9_pin_1, byte db9_pin_2, byte db9_pin_3,
     }
 
     _currentState = 0;
+    _lastReadTime = millis();
 }
 
 byte AtariController::getState()
 {
+    if (max(millis() - _lastReadTime, 0) < AC_READ_DELAY_MS)
+    {
+        // Not enough time has elapsed, return previously read state
+        return _currentState;
+    }
+    
     noInterrupts();
     
     // Clear current state
@@ -58,6 +65,8 @@ byte AtariController::getState()
     if (digitalRead(_inputPins[4]) == LOW) { _currentState |= AC_BTN_FIRE; }
     
     interrupts();
+    
+    _lastReadTime = millis();
 
     return _currentState;
 }

@@ -38,6 +38,8 @@ enum
 
 const byte AC_INPUT_PINS = 5;
 
+const unsigned long AC_READ_DELAY_MS = 5;
+
 class AtariController {
     public:
         AtariController(byte db9_pin_1, byte db9_pin_2, byte db9_pin_3, byte db9_pin_4, byte db9_pin_6);
@@ -46,6 +48,8 @@ class AtariController {
 
     private:
         byte _currentState;
+        
+        unsigned long _lastReadTime;
 
         byte _inputPins[AC_INPUT_PINS];
 };
