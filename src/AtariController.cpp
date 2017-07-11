@@ -51,11 +51,11 @@ byte AtariController::getState()
     // Clear current state
     _currentState = 0;
 
-    _currentState |= (digitalRead(_inputPins[0]) == LOW) ? AC_BTN_UP : 0;
-    _currentState |= (digitalRead(_inputPins[1]) == LOW) ? AC_BTN_DOWN : 0;
-    _currentState |= (digitalRead(_inputPins[2]) == LOW) ? AC_BTN_LEFT : 0;
-    _currentState |= (digitalRead(_inputPins[3]) == LOW) ? AC_BTN_RIGHT : 0;
-    _currentState |= (digitalRead(_inputPins[4]) == LOW) ? AC_BTN_FIRE : 0;
+    if (digitalRead(_inputPins[0]) == LOW) { _currentState |= AC_BTN_UP; }
+    if (digitalRead(_inputPins[1]) == LOW) { _currentState |= AC_BTN_DOWN; }
+    if (digitalRead(_inputPins[2]) == LOW) { _currentState |= AC_BTN_LEFT; }
+    if (digitalRead(_inputPins[3]) == LOW) { _currentState |= AC_BTN_RIGHT; }
+    if (digitalRead(_inputPins[4]) == LOW) { _currentState |= AC_BTN_FIRE; }
     
     interrupts();
 
