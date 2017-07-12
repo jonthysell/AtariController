@@ -23,6 +23,6 @@ This sketch reads the state of a single controller and simulates key presses via
 
 ## More Info ##
 
-TODO
+For more information on how the controllers actuall work, see [How To Read Atari Controllers](https://github.com/jonthysell/AtariController/wiki/How-To-Read-Atari-Controllers)
 
 Copyright (c) 2017 Jon Thysell
